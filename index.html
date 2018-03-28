@@ -6,32 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        #app {
+            width: 100px;
+            height: 100px;
+            background: #f90;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="app"></div>
     <script src="./built/output/drag.js"></script>
     <script>
-        function hey( a, b, c ) {
-            console.log( 'Hey', a, b, c )
-        }
-
-        function ho( a, b, c ) {
-            console.log( 'Ho', a, b, c )
-        }
-
-        function letsGo( a, b, c ) {
-            console.log( 'Lets go', a, b, c )
-        }
-
-        var emitter = new EventEmitter();
-        emitter.on('rock', hey )
-        emitter.once('rock', ho )
-        emitter.on('rock', letsGo )
-        emitter.emit('rock', 1, 2, 3)
-        emitter.off('rock', letsGo)
-        console.log('=======')
-        emitter.emit('rock', 1, 2, 3)
+        var a = new Pointer();
+        a.bindStartEvent(document.getElementById('app'));
     </script>
 </body>
 
