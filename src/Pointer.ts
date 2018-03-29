@@ -15,6 +15,7 @@ export default class Pointer extends EventEmitter {
     handleEvent: any = null;
     constructor() {
         super();
+        this.handleEvent = this.handleProxy();
     }
     bindStartEvent(el: Node) {
         this._bindStartEvent(el, true);
@@ -23,7 +24,6 @@ export default class Pointer extends EventEmitter {
         this._bindStartEvent(el, false);
     }
     _bindStartEvent(el: Node, isAdd: boolean) {
-        this.handleEvent = this.handle();
         const method = isAdd ? 'addEventListener' : 'removeEventListener';
         let startEvent = 'mousedown';
         // if ('PointerEvent' in window) {
@@ -38,7 +38,7 @@ export default class Pointer extends EventEmitter {
         }
     }
 
-    handle() {
+    handleProxy() {
         var self: any = this;
         return function(event: any) {
             let method = 'on' + event.type;
@@ -89,7 +89,6 @@ export default class Pointer extends EventEmitter {
     }
 
     onmousedown(event: any) {
-        console.log(event.button);
         const button = event.button;
         if (button && (button !== 0 && button !== 1)) {
             return;
@@ -109,11 +108,11 @@ export default class Pointer extends EventEmitter {
     }
 
     pointerDown(event: any, pointer: any) {
-        this._bindPostStartEvent(event);
+        this._bindPostStartEventS(event);
         this.emit('pointerDown', event, pointer);
     }
 
-    _bindPostStartEvent(event: any) {
+    _bindPostStartEventS(event: any) {
         if (!event) {
             return;
         }
