@@ -87,7 +87,7 @@ export default class Dragger extends Pointer {
     }
 
     pointerMove(event: any, pointer: any) {
-        var moveVector = this._dragPointerMove(event, pointer);
+        const moveVector = this._dragPointerMove(event, pointer);
         this.emit('pointerMove', event, pointer, moveVector);
         this._dragMove(event, pointer, moveVector);
     }
@@ -166,11 +166,9 @@ export default class Dragger extends Pointer {
     }
 
     _dragEnd(event: any, pointer: any) {
-        // set flags
         this.isDragging = false;
-        // re-enable clicking async
         setTimeout(function () {
-            this.isPreventingClicks = null;
+            this.isPreventingClicks = false;
         }.bind(this));
 
         this.dragEnd(event, pointer);

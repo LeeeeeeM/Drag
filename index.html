@@ -11,12 +11,21 @@
             width: 100px;
             height: 100px;
             background: #f90;
+            box-sizing: content-box;
+            padding: 10px;
+            margin: 15px;
+        }
+        #box {
+            overflow: auto;
         }
     </style>
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="box">
+        <div id="app"></div>
+    </div>
+    
     <script src="./built/output/drag.js"></script>
     <script>
         var a = new Pointer();
