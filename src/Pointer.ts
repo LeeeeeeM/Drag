@@ -26,11 +26,6 @@ export default class Pointer extends EventEmitter {
     _bindStartEvent(el: Node, isAdd: boolean) {
         const method = isAdd ? 'addEventListener' : 'removeEventListener';
         let startEvent = 'mousedown';
-        // if ('PointerEvent' in window) {
-        //     startEvent = 'pointerdown';
-        // } else if ('ontouchstart' in window) {
-        //     startEvent = 'ontouchstart';
-        // }
         if (isAdd) {
             el.addEventListener(startEvent, this.handleEvent);
         } else {
