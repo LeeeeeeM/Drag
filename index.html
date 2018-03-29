@@ -7,10 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #app {
+        #a1 {
             width: 100px;
             height: 100px;
             background: #f90;
+            box-sizing: content-box;
+            padding: 10px;
+            margin: 15px;
+        }
+
+        #a2 {
+            width: 100px;
+            height: 100px;
+            background: #890;
             box-sizing: content-box;
             padding: 10px;
             margin: 15px;
@@ -26,18 +35,25 @@
 
 <body>
     <div id="box">
-        <div id="app"></div>
+        <div id="a1"></div>
+        <div id="a2"></div>
     </div>
     
     <script src="./built/output/drag.js"></script>
-    <!-- <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script> -->
     <script>
-        var app = document.getElementById('app');
-        var draggie = new Draggabilly(app, {
-            
+        var a1 = document.getElementById('a1');
+        var a2 = document.getElementById('a2');
+        var draggie1 = new Draggabilly(a1, {
+            containment: '#box'
         })
-        draggie.on('dragStart', function() {
-            console.log('drag start');
+        var draggie2 = new Draggabilly(a2, {
+
+        })
+        draggie1.on('dragStart', function() {
+            console.log('drag start1');
+        })
+        draggie2.on('dragStart', function() {
+            console.log('drag start2');
         })
     </script>
 </body>
