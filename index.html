@@ -16,7 +16,10 @@
             margin: 15px;
         }
         #box {
-            overflow: auto;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #f00;
         }
     </style>
 </head>
@@ -27,9 +30,15 @@
     </div>
     
     <script src="./built/output/drag.js"></script>
+    <!-- <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script> -->
     <script>
-        var a = new Pointer();
-        a.bindStartEvent(document.getElementById('app'));
+        var app = document.getElementById('app');
+        var draggie = new Draggabilly(app, {
+            
+        })
+        draggie.on('dragStart', function() {
+            console.log('drag start');
+        })
     </script>
 </body>
 

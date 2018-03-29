@@ -34,6 +34,7 @@ export default class Pointer extends EventEmitter {
     }
 
     handleProxy() {
+        // 生成一个闭包，指向相同的闭包，用于清除事件方便
         var self: any = this;
         return function(event: any) {
             let method = 'on' + event.type;
@@ -113,6 +114,8 @@ export default class Pointer extends EventEmitter {
         }
         const events = postStartEvents[event.type];
         events.forEach(function (type: string) {
+            // 用于区分不同的作用域，每个实例的作用域都不相同，鼠标点击mouseup之后
+            // 清除事件。
             window.addEventListener(type, this.handleEvent);
         }, this);
         this._boundPointerEvents = events;

@@ -16,6 +16,7 @@ const positionValues: any = {
 
 
 function applyGrid(value: any, grid: any, method: any = 'round') {
+    // 四舍五入，突变
     return grid ? (Math as any)[method](value / grid) * grid : value;
 }
 
@@ -170,7 +171,9 @@ export default class Drag extends Dragger {
         var gridY = grid && grid[1];
 
         dragX = applyGrid(dragX, gridX);
+        // dragX = applyGrid(dragX, 100);
         dragY = applyGrid(dragY, gridY);
+        // dragY = applyGrid(dragY, 100);
 
         dragX = this.containDrag('x', dragX, gridX);
         dragY = this.containDrag('y', dragY, gridY);
